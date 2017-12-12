@@ -1,0 +1,39 @@
+plugins {
+    id 'org.jetbrains.intellij' version '0.2.17'
+}
+
+group 'com.jesus_crie'
+version '0.4'
+
+apply plugin: 'java'
+
+sourceCompatibility = targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    compile 'club.minnced:Java-DiscordRPC:v1.3.0'
+}
+
+intellij {
+    version '2017.1'
+}
+patchPluginXml {
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+
+task fatJar(type: Jar) {
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    with jar
+}

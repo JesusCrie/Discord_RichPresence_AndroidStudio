@@ -1,0 +1,37 @@
+<idea-plugin>
+    <id>com.jesus_crie.androidstudio_discordpresence</id>
+    <name>AS - Discord Presence</name>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    
+    <idea-version since-build="171" />
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationService serviceImplementation="com.jesus_crie.androidstudio_discordpresence.service.EditorListenerService"/>
+        <applicationService serviceImplementation="com.jesus_crie.androidstudio_discordpresence.service.DiscordService"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="ASDiscordPresence.Menu" text="_Discord Presence" description="Enable/Disable the plugin">
+            <add-to-group group-id="MainMenu" anchor="last" />
+            <action class="com.jesus_crie.androidstudio_discordpresence.action.StartAction" id="ASDiscordPresence.StartAction"
+                    text="Setup/Start Presence" description="Enable the presence" />
+            <action id="ASDiscordPresence.StopAction" class="com.jesus_crie.androidstudio_discordpresence.action.StopAction"
+                    text="Stop Presence" description="Terminate the presence" />
+            <action id="ASDiscordPresence.TestAction" class="com.jesus_crie.androidstudio_discordpresence.action.TestAction"
+                    text="TestAction" description="Test" />
+        </group>
+    </actions>
+</idea-plugin>
